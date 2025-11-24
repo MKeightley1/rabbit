@@ -1,9 +1,5 @@
 <?php
 
-
-
-<?php
-
 header('Content-Type: application/json');
 
 // Example URL
@@ -30,3 +26,4 @@ if ($html === false) {
 
 echo json_encode(["status" => "success", "length" => strlen($html)]);
 
+?>
