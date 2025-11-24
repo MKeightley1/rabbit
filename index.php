@@ -6,12 +6,14 @@ header('Content-Type: application/json');
 $raw = file_get_contents("php://input");
 $data = json_decode($raw, true);
 
-$url = $data['url'] ?? null;
+// $url = $data['url'] ?? null;
 
-if (!$url) {
-    echo json_encode(["error" => "Missing URL"]);
-    exit;
-}
+// if (!$url) {
+//     echo json_encode(["error" => "Missing URL"]);
+//     exit;
+// }
+
+$url = "https://www.punters.com.au/racing-results/2025-11-01";
 
 // Create a stream context with User-Agent
 $options = [
@@ -34,10 +36,12 @@ if ($html === false) {
 // Optionally truncate output to avoid huge JSON
 $preview = substr($html, 0, 5000); // first 5000 chars
 
-echo json_encode([
-    "url" => $url,
-    "html_preview" => $html,
-    "length" => strlen($html)
-], JSON_PRETTY_PRINT);
+// echo json_encode([
+//     "url" => $url,
+//     "html_preview" => $preview,
+//     "length" => strlen($html)
+// ], JSON_PRETTY_PRINT);
+
+echo $html;
 
 ?>
