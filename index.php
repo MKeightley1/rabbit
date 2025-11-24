@@ -36,7 +36,7 @@ $preview = substr($html, 0, 5000); // first 5000 chars
 
 echo json_encode([
     "url" => $url,
-    "html_preview" => $preview,
+    "html_preview" => $html,
     "length" => strlen($html)
 ], JSON_PRETTY_PRINT);
 
