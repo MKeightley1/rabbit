@@ -33,17 +33,10 @@ if ($html === false) {
     exit;
 }
 
-/*
-    Your JavaScript regex equivalents
-    We assume POST body includes:
-    regex[0] = table regex
-    regex[1] = event ID regex
-    regex[2] = title regex
-*/
-
-$tableRegex    = $regex[0] ?? null;
-$eventIdRegex  = $regex[1] ?? null;
-$titleRegex    = $regex[2] ?? null;
+// Wrap regex patterns in PHP delimiters
+$tableRegex    = isset($regex[0]) ? '#' . $regex[0] . '#s' : null;   // 's' flag for dotall
+$eventIdRegex  = isset($regex[1]) ? '#' . $regex[1] . '#s' : null;
+$titleRegex    = isset($regex[2]) ? '#' . $regex[2] . '#s' : null;
 
 if (!$tableRegex || !$eventIdRegex || !$titleRegex) {
     echo json_encode(["error" => "Three regex patterns required"]);
